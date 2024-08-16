@@ -13,4 +13,7 @@ class CategoryController extends Controller
     public function createForm(){
         return view('admin.pages.category.form');
     }
+    public function store(Request $request){
+        dd($request->all());
+    }
 }
