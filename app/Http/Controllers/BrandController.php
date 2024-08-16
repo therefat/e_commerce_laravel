@@ -2,11 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
     public function list(){
-        return view('admin.pages.brand.list');
+        $brands = Brand::all();
+        return view('admin.pages.brand.list',compact('brands'));
+    }
+    public function createForm(){
+        return view('admin.pages.brand.form');
+    }
+    public function store(Request $request) {
+        Brand::create([
+            'name'=>$request->brand_name,
+            'description'=>$request->description,
+        ]);
+        return redirect()->back();
     }
 }
