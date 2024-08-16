@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->string('name',100)->unique();
+            $table->string('status',10)->default('active');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
