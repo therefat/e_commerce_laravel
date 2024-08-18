@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\categories;
 use App\Models\Product;
@@ -38,14 +39,25 @@ class ProductController extends Controller
         // return redirect()->back();
 
         return redirect()->back()->withErrors($validate);
+      } 
+      $fileName=null;
+      if($request->hasFile('image'))
+      {
+          $file=$request->file('image');
+          $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
+          
+          $file->storeAs('/uploads',$fileName);
+
       }
+      
             Product::create([
                 'brand_id'=>$request->brand_id,
                 'category_id'=>$request->category_id,
                 'name'=>$request->product_name,
                 'price'=>$request->product_price,
                 'description'=>$request->product_description,
-                'stock'=>$request->product_stock
+                'stock'=>$request->product_stock,
+                'image'=>$fileName
             ]);
             return redirect()->route('product.list');
     }

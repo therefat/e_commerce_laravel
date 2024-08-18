@@ -2,7 +2,7 @@
 @section('content')
 <h1>Add Product</h1>
 
-<form action="{{route('product.store')}}" method="post">
+<form action="{{route('product.store')}}" method="post" enctype="multipart/form-data">
   @csrf
  <div class="form-group">
    <label for="">Enter Product Name:</label>
@@ -48,7 +48,7 @@
  </div>
  <div class="form-group">
   <label for="">Upload Image: </label>
-  <input type="file" class="form-control">
+  <input name="image" type="file" class="form-control">
 </div>
 
 
