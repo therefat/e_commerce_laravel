@@ -13,6 +13,10 @@ Route::post('/login-form-post',[UserController::class,'loginPost'])->name('admin
 Route::group(['middleware'=>'auth'],function(){
 Route::get('/admin/logout',[UserController::class,'logout'])->name('admin.logout');
 Route::get('/',[HomeController::class,'home'])->name('dashboard');
+Route::get('/users',[UserController::class, 'list'])->name('users.list');
+    Route::get('/users/create',[UserController::class, 'createForm'])->name('users.create');
+
+Route::post('/users/store',[UserController::class, 'store'])->name('users.store');
 Route::get('/category/list',[CategoryController::class,'list'])->name('category.list');
 Route::get('/category/form',[CategoryController::class,"createForm"])->name('category.create');
 Route::post('/category/store',[CategoryController::class,'store'])->name('category.store');

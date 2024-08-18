@@ -21,6 +21,12 @@
             <span data-feather="home" class="align-text-bottom"></span>
             Brands
           </a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{{route('users.list')}}">
+            <span data-feather="home" class="align-text-bottom"></span>
+            Users
+          </a>
         </li>
 
         <li class="nav-item">
