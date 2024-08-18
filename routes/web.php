@@ -7,9 +7,20 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Frontend\CustomController;
+use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[FrontendHomeController::class,'home'])->name('home');
+Route::get('/registration',[CustomController::class,'registration'])->name('customer.registration');
+Route::post('/registration',[CustomController::class, 'store'])->name('customer.store');
+Route::get('/login',[CustomController::class, 'login'])->name('customer.login');
+Route::post('/login',[CustomController::class,'doLogin'])->name('customer.do.login');
+Route::get('/single-product/{id}',[FrontendProductController::class,'singleProductView'])->name('single.product');
+
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('/logout',[CustomController::class, 'logout'])->name('customer.logout');
+});
 
 Route::group(['prefix'=>'admin'],function(){
     Route::get('/admin/login',[UserController::class,'loginForm'])->name('login');

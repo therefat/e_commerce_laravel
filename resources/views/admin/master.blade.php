@@ -3,6 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    @notifyCss
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
@@ -93,7 +94,7 @@
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       
-
+      @include('notify::components.notify')
         @yield('content')
       
     </main>
@@ -105,7 +106,7 @@
 
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" ></script>
 	  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" >
-
+  @notifyJs
 	  </script><script src="https://getbootstrap.com/docs/5.2/examples/dashboard/dashboard.js"></script>
   </body>
 </html>

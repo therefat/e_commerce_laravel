@@ -1,7 +1,7 @@
  <!-- Navigation-->
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#!">E-Commerce</a>
+        <a class="navbar-brand" href="#!">E-commerce</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -24,6 +24,17 @@
                     <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                 </button>
             </form>
+
+        @guest
+            <a href="{{route('customer.login')}}" style="margin-left:5px ;">Login</a>
+            <span style="padding: 5px;">|</span>
+            <a href="{{route('customer.registration')}}">Registration</a>
+        @endguest
+
+        @auth
+        <a href="{{route('customer.logout')}}">Logout</a>
+        @endauth
+
         </div>
     </div>
 </nav>
