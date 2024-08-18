@@ -19,6 +19,7 @@ Route::post('/login',[CustomController::class,'doLogin'])->name('customer.do.log
 Route::get('/single-product/{id}',[FrontendProductController::class,'singleProductView'])->name('single.product');
 
 Route::group(['middleware'=>'auth'],function(){
+    Route::get('/profile', [CustomController::class, 'profile'])->name('profile.view');
     Route::get('/logout',[CustomController::class, 'logout'])->name('customer.logout');
 });
 

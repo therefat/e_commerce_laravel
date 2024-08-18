@@ -15,6 +15,9 @@ class CustomController extends Controller
     public function registration(){
         return view('frontend.pages.registration');
     }
+    public function profile(){
+        return view('frontend.pages.profile');
+    }
     public function store(Request $request){
         User::create([
             'name'=>$request->name,
