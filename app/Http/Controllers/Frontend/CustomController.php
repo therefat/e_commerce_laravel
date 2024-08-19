@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\User;
 
 use Illuminate\Http\Request;
@@ -16,7 +17,8 @@ class CustomController extends Controller
         return view('frontend.pages.registration');
     }
     public function profile(){
-        return view('frontend.pages.profile');
+        $orders = Order::where('user_id',auth()->user()->id)->get();
+        return view('frontend.pages.profile',compact('orders'));
     }
     public function store(Request $request){
         User::create([
