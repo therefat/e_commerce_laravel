@@ -14,4 +14,14 @@ class HomeController extends Controller
         // dd($products);
         return view('frontend.pages.home',compact('products'));
     }
+    public function search(Request $request){
+        if($request->search){
+            $products = Product::where('name','LIKE','$'.$request->search.'%')->get();
+
+        }
+        else{
+            $products = Product::all();
+        }
+        return view('frontend.pages.search',compact('products'));
+    }
 }

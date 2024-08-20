@@ -14,6 +14,7 @@ use App\Http\Controllers\Frontend\ProductController as FrontendProductController
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[FrontendHomeController::class,'home'])->name('home');
+Route::get('/search-product',[FrontendHomeController::class,'search'])->name('product.search');
 Route::get('/registration',[CustomController::class,'registration'])->name('customer.registration');
 Route::post('/registration',[CustomController::class, 'store'])->name('customer.store');
 Route::get('/login',[CustomController::class, 'login'])->name('customer.login');
