@@ -49,4 +49,7 @@ class CartController extends Controller
         }
         return view('frontend.pages.cart');
     }
+    public function checkout(){
+        return view('frontend.pages.checkout');
+    }
 }

@@ -30,6 +30,10 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/logout',[CustomController::class, 'logout'])->name('customer.logout');
     Route::get('/buy-now/{product_id}',[OrderController::class,'buyNow'])->name('buy.now');
     Route::get('/cancel-order/{product_id}',[OrderController::class,'cancelOrder'])->name('order.cancel');
+
+    Route::get('/checkout',[CartController::class,'checkout'])->name('checkout');
+
+    Route::post('/order-place',[OrderController::class, 'orderPlace'])->name('order.place');
 });
 
 Route::group(['prefix'=>'admin'],function(){
