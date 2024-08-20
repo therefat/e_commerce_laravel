@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CustomController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
@@ -18,6 +19,10 @@ Route::post('/registration',[CustomController::class, 'store'])->name('customer.
 Route::get('/login',[CustomController::class, 'login'])->name('customer.login');
 Route::post('/login',[CustomController::class,'doLogin'])->name('customer.do.login');
 Route::get('/single-product/{id}',[FrontendProductController::class,'singleProductView'])->name('single.product');
+
+//cart routes here
+Route::get('/cart-view',[CartController::class,'viewCart'])->name('cart.view');
+Route::get('/add-to-cart/{product_id}',[CartController::class,'addToCart'])->name('add.toCart');
 
 Route::group(['middleware'=>'auth'],function(){
     Route::get('/profile', [CustomController::class, 'profile'])->name('profile.view');
@@ -31,6 +36,9 @@ Route::group(['prefix'=>'admin'],function(){
 Route::post('/login-form-post',[UserController::class,'loginPost'])->name('admin.login.post');
 
 Route::group(['middleware'=>'auth'],function(){
+Route::group(['middleware'=>'checkAdmin'],function(){
+
+
 Route::get('/admin/logout',[UserController::class,'logout'])->name('admin.logout');
 Route::get('/',[HomeController::class,'home'])->name('dashboard');
 Route::get('/users',[UserController::class, 'list'])->name('users.list');
@@ -51,6 +59,7 @@ Route::get('/product/delete/{id}',[ProductController::class, 'delete'])->name('p
 Route::get('/product/edit/{id}',[ProductController::class, 'edit'])->name('product.edit');
 
 Route::put('/product/update/{id}',[ProductController::class, 'update'])->name('product.update');
+});
 });
 });
 
