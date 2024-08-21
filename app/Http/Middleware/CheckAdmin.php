@@ -3,7 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class CheckAdmin
@@ -20,6 +22,8 @@ class CheckAdmin
         }
         notify()->error('You are not admin.');
         return redirect()->route('home');
+
+           
         
     }
 }

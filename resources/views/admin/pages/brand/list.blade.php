@@ -3,7 +3,7 @@
 
 
 @section('content')
-<a href="{{url('/brand/form')}}" class="btn btn-success">Create New Brand</a>
+<a href="{{route('brand.create')}}" class="btn btn-success">Create New Brand</a>
 <table class="table table-dark">
   <thead>
     <tr>

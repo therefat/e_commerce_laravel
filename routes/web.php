@@ -51,7 +51,7 @@ Route::get('/users',[UserController::class, 'list'])->name('users.list');
 
 Route::post('/users/store',[UserController::class, 'store'])->name('users.store');
 Route::get('/category/list',[CategoryController::class,'list'])->name('category.list');
-Route::get('/category/form',[CategoryController::class,"createForm"])->name('category.create')->name('category.form');
+Route::get('/category/form',[CategoryController::class,"createForm"])->name('category.create');
 Route::post('/category/store',[CategoryController::class,'store'])->name('category.store');
 Route::get('/brand/list',[BrandController::class,'list'])->name('brand.list');
 Route::get('/brand/form',[BrandController::class,'createForm'])->name('brand.create');

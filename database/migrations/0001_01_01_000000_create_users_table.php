@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('role');
-            $table->string('image');
+            $table->string('image')->default('dkfdkf');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

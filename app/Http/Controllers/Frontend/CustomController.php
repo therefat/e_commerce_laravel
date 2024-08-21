@@ -45,7 +45,7 @@ class CustomController extends Controller
         $credentials= $request->except('_token');
         if(auth()->attempt($credentials)){
             notify()->success('Login Sucess');
-            return redirect()->route('home');
+            return redirect()->route('dashboard');
         }
         notify()->error('Invalid Credentails');
         return redirect()->back();
