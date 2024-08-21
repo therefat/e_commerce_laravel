@@ -5,7 +5,9 @@ namespace App\Providers;
 // use Illuminate\Contracts\Pagination\Paginator;
 // use Illuminate\Pagination\Paginator as PaginationPaginator;
 
+use App\Models\categories;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,6 +27,10 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Paginator::useBootstrap();
+        if(Schema::hasTable('categories')){
+            $categories = categories::all();
+            view()->share('headerCategories', $categories);
+        }
 
     }
 }

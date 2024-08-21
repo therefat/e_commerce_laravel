@@ -24,4 +24,9 @@ class HomeController extends Controller
         }
         return view('frontend.pages.search',compact('products'));
     }
+
+    public function productsUnderCategory($category_id){
+        $productsUnderCategory = Product::where('category_id',$category_id)->get();
+        return view('frontend.pages.products-under-category',compact('productsUnderCategory'));
+    }
 }

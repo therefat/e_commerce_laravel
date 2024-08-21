@@ -20,6 +20,7 @@ Route::post('/registration',[CustomController::class, 'store'])->name('customer.
 Route::get('/login',[CustomController::class, 'login'])->name('customer.login');
 Route::post('/login',[CustomController::class,'doLogin'])->name('customer.do.login');
 Route::get('/single-product/{id}',[FrontendProductController::class,'singleProductView'])->name('single.product');
+Route::get('/product-under-cagtegory/{cat_id}',[FrontendHomeController::class,'productsUnderCategory'])->name('products.under.category');
 
 //cart routes here
 Route::get('/cart-view',[CartController::class,'viewCart'])->name('cart.view');
