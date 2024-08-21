@@ -13,7 +13,10 @@ use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
 use Illuminate\Support\Facades\Route;
 
+Route::group(['middleware'=>'locale'],function(){
+
 Route::get('/',[FrontendHomeController::class,'home'])->name('home');
+Route::get('/change-lang/{locale}', [FrontendHomeController::class, 'changeLang'])->name('change.lang');
 Route::get('/search-product',[FrontendHomeController::class,'search'])->name('product.search');
 Route::get('/registration',[CustomController::class,'registration'])->name('customer.registration');
 Route::post('/registration',[CustomController::class, 'store'])->name('customer.store');
@@ -65,6 +68,7 @@ Route::get('/product/delete/{id}',[ProductController::class, 'delete'])->name('p
 Route::get('/product/edit/{id}',[ProductController::class, 'edit'])->name('product.edit');
 
 Route::put('/product/update/{id}',[ProductController::class, 'update'])->name('product.update');
+});
 });
 });
 });

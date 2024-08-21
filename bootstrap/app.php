@@ -4,6 +4,7 @@
 
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CheckAdmin;
+use App\Http\Middleware\LocalisationMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -20,6 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'auth' => \App\Http\Middleware\Authenticate::class,
             'checkAdmin' => CheckAdmin::class,
+            'locale' => LocalisationMiddleware::class,
         ]);
         
     })
