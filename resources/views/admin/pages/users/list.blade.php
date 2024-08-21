@@ -2,7 +2,7 @@
 
 @section('content')
 <h1>User List</h1>
-
+<button class="btn btn-success" onclick="printContent('printDiv')">Print</button>
 <a href="{{route('users.create')}}" class="btn btn-success">Create new User</a>
 <table class="table">
   <thead>
@@ -41,4 +41,18 @@
     
   </tbody>
 </table>
-@endsection
+@endsection 
+@push('yourJsCode')
+
+<script type="text/javascript">
+      
+      function printContent(el){
+          var restorepage = $('body').html();
+          var printcontent = $('#' + el).clone();
+          $('body').empty().html(printcontent);
+          window.print();
+          $('body').html(restorepage);
+      }
+  
+  </script>
+@endpush
