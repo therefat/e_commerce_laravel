@@ -25,12 +25,12 @@ class User extends Authenticatable
     /**
      * The attributes that should be hidden for serialization.
      *
-    //  * @var array<int, string>
+     * @var array<int, string>
      */
-    // protected $hidden = [
-    //     'password',
-    //     'remember_token',
-    // ]; 
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ]; 
     protected $guarded=[];
 
     /**
@@ -38,11 +38,13 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+        public function roles()
+        {
+            return $this->belongsToMany(Role::class);
+        }
+    
 }

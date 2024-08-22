@@ -11,9 +11,9 @@ class CategoryController extends Controller
 {
     //
     public function list (){
-        $categories = categories::all();
+        $data['categories']=categories::all();
         
-        return view('admin.pages.category.list',compact('categories'));
+        return view('admin.pages.category.list',$data);
     }
     public function createForm(){
         return view('admin.pages.category.form');

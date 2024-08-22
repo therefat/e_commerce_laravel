@@ -7,10 +7,12 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CustomController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware'=>'locale'],function(){
@@ -68,6 +70,13 @@ Route::get('/product/delete/{id}',[ProductController::class, 'delete'])->name('p
 Route::get('/product/edit/{id}',[ProductController::class, 'edit'])->name('product.edit');
 
 Route::put('/product/update/{id}',[ProductController::class, 'update'])->name('product.update');
+  //roles
+  Route::get('/roles/list', [RoleController::class, 'list'])->name('roles.list');
+  Route::get('/roles/form', [RoleController::class, 'createForm'])->name('roles.form');
+  Route::post('/roles/store', [RoleController::class, 'store'])->name('roles.store');
+  Route::get('/roles/edit/{id}', [RoleController::class, 'edit'])->name('roles.edit');
+  Route::post('/roles/edit/{id}', [RoleController::class, 'update'])->name('roles.edit');
+  Route::get('/roles/delete/{id}', [RoleController::class, 'delete'])->name('roles.delete');
 });
 });
 });

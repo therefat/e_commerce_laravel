@@ -11,13 +11,7 @@
 
 <form action="{{route('users.store')}}" method="post" enctype="multipart/form-data">
 
-        @if(session()->has('myError'))
-        <p class="alert alert-danger">{{session()->get('myError')}}</p>
-        @endif
-
-        @if(session()->has('message'))
-        <p class="alert alert-success">{{session()->get('message')}}</p>
-        @endif
+  @include('admin.partials.message')
 
    @csrf
   <div class="form-group">
@@ -30,12 +24,12 @@
   </div>
 
   <div class="form-group">
-    <label for="">Select Role:</label>
-   <select required class="form-control" name="role" id="">
-        <!-- <option value="">Admin</option> -->
-        <option value="manager">Manager</option>
-        <option value="account">Account</option>
-   </select>
+    <label for="role">Select Role:</label>
+    <select required class="form-control" name="role" id="role">
+        @foreach($roles as $role)
+            <option value="{{ $role->id }}">{{ $role->name }}</option>
+        @endforeach
+    </select>
   </div>
 
 

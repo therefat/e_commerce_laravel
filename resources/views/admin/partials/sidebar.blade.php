@@ -52,7 +52,12 @@
           </a>
         </li>
 
-      
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{{ route('roles.list') }}">
+            <span data-feather="home" class="align-text-bottom"></span>
+            Roles
+          </a>
+        </li>
 
 
         

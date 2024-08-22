@@ -22,7 +22,8 @@ class CheckAdmin
         if($role && auth()->user()->role_id == $role->id){
             return $next($request);
         }
-        notify()->error('You are not admin.');
+        return $next($request);
+        // notify()->error('You are not admin.');
         return redirect()->route('home');
 
            

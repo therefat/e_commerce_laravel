@@ -2,6 +2,7 @@
 
 @section('content')
 <h1>User List</h1>
+@include('admin.partials.message');
 <button class="btn btn-success" onclick="printContent('printDiv')">Print</button>
 <a href="{{route('users.create')}}" class="btn btn-success">Create new User</a>
 <table class="table">

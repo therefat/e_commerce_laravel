@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +13,8 @@ class UserController extends Controller
 {
     //
     public function loginForm(){
-        return view('admin.pages.login');
+        $roles = Role::all();
+        return view('admin.pages.users.create',compact('roles'));
     }
     public function loginPost(Request $request){
         $val = Validator::make($request->all(),
@@ -74,4 +76,5 @@ class UserController extends Controller
         ]);
         return redirect()->back()->with('message','User Created succesfully.');
     }
+   
 }
