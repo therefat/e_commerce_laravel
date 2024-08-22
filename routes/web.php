@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 
 use App\Http\Controllers\Backend\ProductController;
@@ -71,12 +72,23 @@ Route::get('/product/edit/{id}',[ProductController::class, 'edit'])->name('produ
 
 Route::put('/product/update/{id}',[ProductController::class, 'update'])->name('product.update');
   //roles
-  Route::get('/roles/list', [RoleController::class, 'list'])->name('roles.list');
-  Route::get('/roles/form', [RoleController::class, 'createForm'])->name('roles.form');
-  Route::post('/roles/store', [RoleController::class, 'store'])->name('roles.store');
-  Route::get('/roles/edit/{id}', [RoleController::class, 'edit'])->name('roles.edit');
-  Route::post('/roles/edit/{id}', [RoleController::class, 'update'])->name('roles.edit');
-  Route::get('/roles/delete/{id}', [RoleController::class, 'delete'])->name('roles.delete');
+  //roles
+  Route::group(['prefix'=>'roles','as'=>'roles.'],function(){
+    Route::get('/list', [RoleController::class, 'list'])->name('list');
+    Route::get('/form', [RoleController::class, 'createForm'])->name('form');
+    Route::post('/store', [RoleController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [RoleController::class, 'edit'])->name('edit');
+    Route::post('/edit/{id}', [RoleController::class, 'update'])->name('edit');
+    Route::get('/delete/{id}', [RoleController::class, 'delete'])->name('delete');
+
+}); 
+Route::get('/roles/assign/{id}', [RoleController::class, 'assign'])->name('roles.assign');
+Route::get('/roles/test/', [RoleController::class, 'test'])->name('roles.test');
+Route::get('permission-assign/{role_id}',[PermissionController::class, 'permission'])->name('permission');  
+Route::post('permission-assign/{role_id}',[PermissionController::class, 'AssignPermission'])->name('assign.permission');
+
+
+
 });
 });
 });

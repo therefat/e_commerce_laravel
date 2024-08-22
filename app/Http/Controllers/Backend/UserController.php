@@ -50,7 +50,7 @@ class UserController extends Controller
     public function store(Request $request){
         $validate = Validator::make($request->all(),[
             'user_name'=> "required",
-            'role'=>'required',
+            'role_id'=>'required',
             'user_email'=>'required|email',
             'user_password'=> 'required|min:6',
         ]);
@@ -69,7 +69,7 @@ class UserController extends Controller
         // dd($request->role);
         User::create([
             'name'=>$request->user_name,
-            'role'=>$request->role,
+            'role_id'=>$request->role,
             'image'=>$fileName,
             'email'=>$request->user_email,
             'password'=>bcrypt($request->user_password),

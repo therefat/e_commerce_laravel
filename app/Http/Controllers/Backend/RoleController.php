@@ -78,4 +78,9 @@ class RoleController extends Controller
             $delete->delete();
             return redirect()->route('roles.list')->with('message', 'Role deleted successfully.');
         }
+
+        public function assing($id){
+            $assign = Role::find($id);
+            return view('admin.pages.roles.assignTask',compact('assign'));
+        }
 }
