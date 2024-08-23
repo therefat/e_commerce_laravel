@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\Order;
 use App\Models\User;
 
@@ -21,10 +22,10 @@ class CustomController extends Controller
         return view('frontend.pages.profile',compact('orders'));
     }
     public function store(Request $request){
-        User::create([
+        Customer::create([
             'name'=>$request->name,
             'email'=>$request->email,
-            'role'=>'customer',
+            
             'password'=>bcrypt($request->password),
         ]);
         notify()->success('Customer Registration successful');
@@ -43,7 +44,7 @@ class CustomController extends Controller
             return redirect()->back();
         }
         $credentials= $request->except('_token');
-        if(auth()->attempt($credentials)){
+        if(auth('customerGuard')->attempt($credentials)){
             notify()->success('Login Sucess');
             return redirect()->route('dashboard');
         }

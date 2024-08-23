@@ -36,9 +36,9 @@
             <a href="{{route('customer.registration')}}">Registration</a>
         @endguest
 
-        @auth
+        @auth('customerGuard')
         <a href="{{route('customer.logout')}}">Logout </a> |
-        <a href="{{route('profile.view')}}"> {{auth()->user()->name}} ({{ auth()->user()->role }})</a>
+        <a href="{{route('profile.view')}}"> {{auth('customerGuard')->user()->name}}</a>
         @endauth
         <select onchange="window.location.href=this.value;" name="" id="" class="form-control" style="width: min-content; margin-left:10px;">
             <option @if(session()->get('locale')=='en') selected @endif value="{{route('change.lang','en')}}">
